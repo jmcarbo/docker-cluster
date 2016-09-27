@@ -1,3 +1,5 @@
 #!/bin/sh
 IP=$(hostname -I | cut -f 1 -d ' ')
-exec /usr/local/bin/serf agent -advertise="${IP}" -retry-join serf -join serf -discover=serf >>/var/log/serf.log 2>&1
+CLUSTER=${CLUSTER:-serf}
+SERVICE=${SERVICE:-serf}
+exec /usr/local/bin/serf agent -advertise="${IP}" -retry-join ${SERVICE} -join ${SERVICE} -discover=${CLUSTER} >>/var/log/serf.log 2>&1
