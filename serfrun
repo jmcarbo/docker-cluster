@@ -1,2 +1,3 @@
 #!/bin/sh
-exec /usr/local/bin/serf agent -advertise="0.0.0.0" -retry-join serf -join serf -discover=serf >>/var/log/serf.log 2>&1
+IP=$(hostname -I | cut -f 1 -d ' ')
+exec /usr/local/bin/serf agent -advertise="${IP}" -retry-join serf -join serf -discover=serf >>/var/log/serf.log 2>&1
