@@ -2,4 +2,5 @@
 IP=$(hostname -I | cut -f 1 -d ' ')
 CLUSTER=${CLUSTER:-serf}
 SERVICE=${SERVICE:-serf}
-exec /usr/local/bin/serf agent -advertise="${IP}" -retry-join ${SERVICE} -join ${SERVICE} -discover=${CLUSTER} >>/var/log/serf.log 2>&1
+EVENT_HANDLER=${EVENT_HANDLER:-/etc/serf/serf_handler}
+exec /usr/local/bin/serf agent -advertise="${IP}" -retry-join ${SERVICE} -join ${SERVICE} -discover=${CLUSTER} -event-handler ${EVENT_HANDLER} >>/var/log/serf.log 2>&1
