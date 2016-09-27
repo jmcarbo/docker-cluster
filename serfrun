@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/local/bin/serf agent -advertise="0.0.0.0" -join serf -discover=serf >>/var/log/serf.log 2>&1
+exec /usr/local/bin/serf agent -advertise="0.0.0.0" -retry-join serf -join serf -discover=serf >>/var/log/serf.log 2>&1
