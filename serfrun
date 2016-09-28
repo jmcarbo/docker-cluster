@@ -1,5 +1,6 @@
 #!/bin/sh
-IP=$(hostname -I | cut -f 1 -d ' ')
+NETWORK=${NETWORK:-10.0.1.*}
+IP=$(hostname -i | grep -o $NETWORK )
 CLUSTER=${CLUSTER:-serf}
 SERVICE=${SERVICE:-serf}
 EVENT_HANDLER=${EVENT_HANDLER:-/etc/serf/serf_handler}
